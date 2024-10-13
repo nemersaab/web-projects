@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(102, 204, 230);
+    text-align: center;
+}
+img{
+    width: 150px;
+    height: auto;
+    margin:10px 3px;
+}
+button{
+    padding: 10px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(66, 230, 134);
+    cursor: pointer;
+}
+input{
+    padding: 10px 20px;
+    border-radius: 3px;
+}

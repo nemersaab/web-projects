@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="calculator.js"></script>
+
+</head>
+
+<body>
+ <div style="width: 215px;" class="centered" >
+  <form id="formy" style="align-items: center;">
+    <input type="text" name="screen" id="scrn" readonly ><br>
+    <button type="button" onclick="f(7)">7</button>
+    <button type="button" onclick="f(8)">8</button>
+    <button type="button" onclick="f(9)">9</button>
+    <button type="button" onclick="f2('+')">+</button>
+    <br>
+    <button type="button" onclick="f(4)">4</button>
+    <button type="button" onclick="f(5)">5</button>
+    <button type="button" onclick="f(6)">6</button>
+    <button type="button" onclick="f2('-')">-</button>
+
+    <br>
+    <button type="button" onclick="f(1)">1</button>
+    <button type="button" onclick="f(2)">2</button>
+    <button type="button" onclick="f(3)">3</button>
+    <button type="button" onclick="f(0)">0</button>
+
+    <br>
+    <button type="button" style="padding-left: 40px; padding-right:40px;" onclick="fdel()">del</button>
+    <button type="button" onclick="f2('/')">/</button>
+    <button type="button" onclick="f2('*')">*</button><br>
+    <button type="button" onclick="fenter()" style="padding-left: 50px;padding-right: 50px;">=</button>
+    <button type="button" style="padding-left: 30px; padding-right:30px;" onclick="fac()">AC</button>
+    <input type="hidden" value=0 id="val1"> 
+    <input type="hidden" value=0 id="val2"> 
+    <input type="hidden" value="5" id="sign"> </div>    
+      </form>  
+      <br>
+      
+</body>
+
+</html>

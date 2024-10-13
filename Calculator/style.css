@@ -1,0 +1,46 @@
+.bordered{
+    border-color: orange;
+    border-radius: 3px;
+}
+input.large{
+    padding: 5px;
+}
+button{
+    padding :10px;
+    padding-left: 15px;
+    padding-right:15px;
+    border-radius: 2px;
+    border-color: red;
+    font-style:italic ;
+    margin-top: 10px;
+}
+body{
+    background-color: beige;
+    align-items: center;
+    
+}
+input{
+    padding: 10px;
+    padding-left: 10px ;
+    margin-right: 20px;
+    margin-left: 2px;
+    border-radius: 5px;
+    border-color: rgb(5, 5, 5);
+}
+form{
+    padding-left: 7px;
+    /* padding-right: 3px; */
+}
+div{
+    padding: 0px;
+    margin-left: 0px;
+    background-color:gray;
+    border-style:double;
+    
+ 
+   
+}
+.centered{
+margin-left: 50%;
+margin-right: 50%;
+}

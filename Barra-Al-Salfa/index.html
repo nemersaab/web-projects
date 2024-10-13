@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Barra al salfa</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="new.js"></script>
+</head>
+<body style="padding-top: 20%;" id="body">
+    <h1 style="margin-top: 0%;">Barra al salfa</h1>
+    <p id="revealing"></p>
+    <form id="formy">
+
+    </form>
+    <form id="buttons">
+        <button type="button" onclick="add_Player() ">Add player</button>
+        <button type="button" onclick="saveData(gameStarts)">Next</button>
+    </form>
+    <div>
+        <select name="gameAround" id="gA" >
+            <option value="football">Football</option>
+            <option value="food">Food</option>
+        </select>        
+        <input type="text" name="hiddenInput" id="hidIn" hidden>
+        <input type="number" name="i" id="i" value="0" hidden>
+        <input type="text" name="roles" id="roles" hidden>
+        <input type="text" name="barra" id="barra" hidden>
+        <button type="button" id="Next" onclick="reveal()" hidden>Next</button>
+    </div>
+</body>
+
+</html>
