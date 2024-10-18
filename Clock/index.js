@@ -10,6 +10,7 @@ function updateClock(){
     m=String(m).padStart(2,0);
     s=String(s).padStart(2,0);
     let par = h+":"+m+":"+s+" "+ext;
-    clock.value = par    
+    clock.innerHTML = par    
 }
+updateClock()
 setInterval(updateClock,1000)

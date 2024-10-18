@@ -1,20 +1,91 @@
 body{
     text-align: center;
-    background-color: rgb(15, 15, 15);
-    vertical-align: bottom;
+    background-color: rgb(236, 220, 220);
 }
-#clock{
+.clock{
+    width: 220px;
+    height: 40px;
     background-color:gray;
     color: rgb(0, 0, 0);
     text-align: center;
     font-weight: bold;
-    padding: 20px 10px;
-    margin-top: 50%;
     border: 5px;
     border-style: double;
     border-radius: 20px;
     border-color: white;
+    font-size: 2.5em;
+    display: flex;
+    flex-direction: column;
+    
+
 }
 #clockContainer{
-    size: 2em;
+align-items: center;
 }
+#clock{
+    margin: 20px;
+    margin-left: 20%;
+    padding: 20px 40px;
+
+}
+#stopWatch{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    padding: 15px 30px;
+    margin: 20px;
+    margin-left: 20%;
+}
+button{
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    cursor: pointer;
+}
+#start{
+    background-color: rgb(34, 184, 34);
+}
+#start:hover{
+    background-color: hsl(140, 83%, 50%);
+}
+#start:active{
+    background-color: hsl(140, 83%, 68%);
+}
+#stop{
+    background-color: hsl(0, 83%, 50%);
+}
+#stop:hover{
+    background-color: hsl(0, 83%, 60%);
+}
+#stop:active{
+    background-color: hsl(0, 83%, 70%);
+}
+#reset{
+    background-color: hsl(249, 87%, 50%);
+}
+#reset:hover{
+    background-color: hsl(249, 87%, 60%);
+}
+#reset:active{
+    background-color: hsl(249, 87%, 70%);
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: 3px;
+    border-style:groove;
+    margin: 10px;
+
+}
+#trans{
+    border: 3px;
+    border-color: black;
+}
+
