@@ -1,46 +1,48 @@
-.bordered{
-    border-color: orange;
-    border-radius: 3px;
+#calc{
+    margin: auto;
+    width: 350px;
+    height: 500px;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
 }
-input.large{
-    padding: 5px;
+#screen{
+    height: 100px;
+    background-color: hsl(0, 0%, 20%);
+    font-size:5rem;
+    color: white;
+}
+#buttons{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    /* gap: 10px; */
 }
 button{
-    padding :10px;
-    padding-left: 15px;
-    padding-right:15px;
-    border-radius: 2px;
-    border-color: red;
-    font-style:italic ;
-    margin-top: 10px;
-}
-body{
-    background-color: beige;
-    align-items: center;
+    width: 60px ;
+    height: 60px;
+    border: none;
+    border-radius: 60px;
+    margin: 5px;
+    font-size: 3rem;
+    color: white;
+    background-color: hsl(0, 0%, 30%);
     
 }
-input{
-    padding: 10px;
-    padding-left: 10px ;
-    margin-right: 20px;
-    margin-left: 2px;
-    border-radius: 5px;
-    border-color: rgb(5, 5, 5);
+.operator{
+    background-color: hsl(35,100%, 55%);
 }
-form{
-    padding-left: 7px;
-    /* padding-right: 3px; */
+button:hover{
+    background-color: hsl(0, 0%, 40%);
 }
-div{
-    padding: 0px;
-    margin-left: 0px;
-    background-color:gray;
-    border-style:double;
-    
- 
-   
+button:active{
+    background-color: hsl(0, 0%, 50%);
 }
-.centered{
-margin-left: 50%;
-margin-right: 50%;
+.operator:hover{
+    background-color: hsl(35,100%, 65%);
+}
+.operator:active{
+    background-color: hsl(35,100%, 75%);
 }

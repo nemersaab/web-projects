@@ -1,0 +1,54 @@
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: linear-gradient("blue",3)
+}
+#quiz{
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 3px;
+    border-radius: 5px;
+    border-style: groove;
+    border-color: black;
+    background-color: rgb(43, 42, 42);
+
+}
+.question,.formy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap :5px;
+    border: 3px;
+    border-radius: 20px;
+    border-style: groove;
+    margin: 10px;
+    padding: 25px;
+    border-color: black;
+    background-color: rgb(59, 59, 59);
+
+}
+input{
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    border: none;
+    padding:3% 3%;
+    margin: 3px;
+}
+button{
+    padding: 3%;
+    border-radius: 10px;
+    border-style: solid;
+    cursor:pointer;
+}
+.addOpt{
+    padding: 2% 29%;
+}
+#nbrOfQuestionsDisplay{
+    text-align: center;
+    
+}

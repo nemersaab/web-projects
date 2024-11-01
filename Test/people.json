@@ -1,0 +1,21 @@
+[{
+    "name":"nemer",
+    "age":20,
+    "speciality":"CS",
+    "university":"LU"
+}
+,
+{
+    "name":"ali",
+    "age":18,
+    "speciality":"BM",
+    "university":"LU"
+}
+,
+{
+    "name":"jawad",
+    "age":20,
+    "speciality":"CS",
+    "university":"LU"
+}
+]
