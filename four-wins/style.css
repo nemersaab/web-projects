@@ -1,0 +1,75 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:hsl(0, 0%, 34%);
+}
+h1{
+    font-size: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+}
+#board{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px;
+    border-style: groove;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 50%);
+    border-color: black;
+    padding: 10px;
+}
+.ball{
+    border: 1px;
+    border-radius: 50px;
+    border-color: black;
+    border-style: groove;
+    padding: 29px;
+    background-color: aliceblue;
+}
+#balls{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 20px;
+    background-color: hsl(240, 100%, 50%);
+    border: 3px;
+    border-color: black;
+    border-style: groove;
+    border-radius: 10px;
+    padding: 4px 4px;
+}
+#buttons{
+    display: flex;
+    gap:5px;
+    margin: 3px;
+}
+button{
+    padding: 3px 11px;
+    background-color:hsl(41, 92%, 53%);
+    border:2px;
+    border-color: black;
+    border-style: groove;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(0, 0, 0);
+    cursor:pointer;
+}
+button:hover{
+    background-color:hsl(41, 92%, 63%);
+}
+button:active{
+    background-color:hsl(41, 92%, 73%);
+}
+#result{
+    border: 3px;
+    border-color:black ;
+    border-style: solid;
+    margin: 10px;
+    padding: 10px 200px;
+    font-size: 2rem;
+    border-radius: 10px;
+
+}
