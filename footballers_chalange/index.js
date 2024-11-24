@@ -1,4 +1,6 @@
 const images = document.getElementsByClassName("image");
+console.log(images.length);
+
 let flag=false;
 let lastClickedPlayer=images[0];
 let lastClickedName=lastClickedPlayer.lastChild.textContent;
@@ -12,7 +14,7 @@ class Info{
 
 }
 let infos = [
-    new Info("Thuram", 26, "French", "Nice"),
+    new Info("Thuram", 26, "French", "Inter Milan"),
     new Info("Harry Kane", 30, "English", "Bayern Munich"),
     new Info("Martinelli", 22, "Brazilian", "Arsenal"),
     new Info("Alison", 31, "Brazilian", "Liverpool"),
@@ -42,11 +44,11 @@ let infos = [
     new Info("Courtois", 31, "Belgian", "Real Madrid"),
     new Info("Lautaro Martínez", 26, "Argentinian", "Inter Milan"),
     new Info("Robert Lewandowski", 35, "Polish", "Barcelona"),
-    new Info("De Ligt", 24, "Dutch", "Bayern Munich"),
+    new Info("De Ligt", 24, "Dutch", "Manchester United"),
     new Info("Lionel Messi", 36, "Argentinian", "Inter Miami"),
     new Info("Rúben Dias", 26, "Portuguese", "Manchester City"),
     new Info("Emiliano Martínez", 31, "Argentinian", "Aston Villa"),
-    new Info("Luis Suárez", 36, "Uruguayan", "Gremio"),
+    new Info("Luis Suárez", 36, "Uruguayan", "Inter Miami"),
     new Info("Son", 31, "South Korean", "Tottenham Hotspur"),
     new Info("Erling Haaland", 23, "Norwegian", "Manchester City"),
     new Info("Luka Modrić", 38, "Croatian", "Real Madrid"),
@@ -59,6 +61,42 @@ let infos = [
     new Info("Vini Jr", 23, "Brazilian", "Real Madrid"),
     new Info("Griezmann", 32, "French", "Atletico Madrid"),
     new Info("Marcus Rashford", 26, "English", "Manchester United"),
+    new Info("Pogba", 30, "French", "Juventus"),
+    new Info("Pulisic", 25, "American", "AC Milan"),
+    new Info("Casemiro", 32, "Brazilian", "Manchester United"),
+    new Info("Drogba", 45, "Ivorian", "Retired"),
+    new Info("David Silva", 37, "Spanish", "Retired"),
+    new Info("Mane", 32, "Senegalese", "Al-Nassr"),
+    new Info("De Jong", 26, "Dutch", "Barcelona"),
+    new Info("Sommer", 35, "Swiss", "Inter Milan"),
+    new Info("Willian", 35, "Brazilian", "Fulham"),
+    new Info("Thiago Silva", 39, "Brazilian", "Chelsea"),
+    new Info("Ryan Giggs", 50, "Welsh", "Retired"),
+    new Info("Pique", 36, "Spanish", "Retired"),
+    new Info("Walker", 34, "English", "Manchester City"),
+    new Info("Kaka", 41, "Brazilian", "Retired"),
+    new Info("Busquets", 36, "Spanish", "Inter Miami"),
+    new Info("Puyol", 46, "Spanish", "Retired"),
+    new Info("Ramos", 38, "Spanish", "Sevilla"),
+    new Info("Kroos", 34, "German", "Real Madrid"),
+    new Info("Ibrahimovic", 42, "Swedish", "Retired"),
+    new Info("Ronaldinho", 44, "Brazilian", "Retired"),
+    new Info("Ronaldo", 47, "Brazilian", "Retired"),
+    new Info("Xavi", 43, "Spanish", "Retired"),
+    new Info("Iniesta", 39, "Spanish", "Emirates Club"),
+    new Info("Zidane", 51, "French", "Retired"),
+    new Info("Henry", 46, "French", "Retired"),
+    new Info("Cristiano Ronaldo", 39, "Portuguese", "Al-Nassr"),
+    new Info("Ozil", 35, "German", "Retired"),
+    new Info("Marquinhos", 29, "Brazilian", "Paris Saint-Germain"),
+    new Info("Thomas Muller", 34, "German", "Bayern Munich"),
+    new Info("Kimmich", 28, "German", "Bayern Munich"),
+    new Info("Iker Casillas", 43, "Spanish", "Retired"),
+    new Info("Robben", 39, "Dutch", "Retired"),
+    new Info("Kvaratskhelia", 23, "Georgian", "Napoli"),
+    new Info("Riyad Mahrez", 33, "Algerian", "Al-Ahli"),
+    new Info("Manuel Neuer", 38, "German", "Bayern Munich"),
+    new Info("Pau Cubarsi", 17, "Spanish", "Barcelona")
 ];
 
 function getInfoByPlayer(image){
