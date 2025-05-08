@@ -1,0 +1,117 @@
+body {
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: #00ff00;
+    text-align: center;
+    animation: glitch-bg 3s infinite;
+}
+
+@keyframes glitch-bg {
+    0%, 100% {
+        background-color: black;
+    }
+    50% {
+        background-color: #111;
+    }
+}
+
+header {
+    background-color: black;
+    padding: 20px;
+    border-bottom: 2px solid #00ff00;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+main {
+    padding: 20px;
+}
+
+.skull-image {
+    width: 350px;
+    margin: 20px auto;
+    display: block;
+    filter: invert(100%);
+    animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-2px, 2px);
+    }
+}
+
+.quote-box {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    background-color: black;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.5);
+    animation: glitch-text 1s infinite;
+}
+
+@keyframes glitch-text {
+    0%, 100% {
+        text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    }
+    50% {
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    }
+}
+
+.quote-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: black;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: flicker 1.5s infinite;
+}
+
+.quote-button:hover {
+    background-color: #00ff00;
+    color: black;
+}
+
+footer {
+    background-color: black;
+    padding: 10px;
+    margin-top: 20px;
+    border-top: 2px solid #00ff00;
+}
+
+footer h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+}
