@@ -31,7 +31,8 @@ let quotes = [
     "Welcome to the matrix."
 ];
 const div = document.getElementById('quote');
-
+const img = document.getElementById('img');
+let clicks = 0;
 function f() {
     if (quotes.length != 0) {
         let num = Math.floor(Math.random() * quotes.length); 
@@ -41,3 +42,25 @@ function f() {
 }
 
 f();
+function f2(){
+if(clicks == 0 || clicks == 2 || clicks == 3 ||clicks ==4 || clicks==6){
+    clicks++;
+}
+else{
+    clicks = 0
+}
+}
+function f3(){
+    if(clicks == 1 || clicks == 5 ){
+        clicks++;
+    }
+    
+    else if(clicks ==7){
+        img.src="easter.png"
+        img.style.filter ="invert(0%)";
+        clicks = 0;
+    }
+    else{
+        clicks = 0
+    }
+}
