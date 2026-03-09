@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لعبة المافيا</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Atmospheric Background -->
+  <div class="bg-layer">
+    <div class="smoke smoke-1"></div>
+    <div class="smoke smoke-2"></div>
+    <div class="smoke smoke-3"></div>
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- SCREEN: Main Menu -->
+  <div id="screen-menu" class="screen active">
+    <div class="menu-container">
+      <div class="logo-block">
+        <div class="logo-eyebrow" data-ar="لعبة" data-en="THE GAME OF">لعبة</div>
+        <h1 class="logo-title" data-ar="المافيا" data-en="MAFIA">المافيا</h1>
+        <div class="logo-rule"></div>
+      </div>
+
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ar" onclick="setLang('ar')">عربي</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+
+      <div class="card">
+        <div class="card-section">
+          <label class="field-label" data-ar="أضف لاعبًا" data-en="Add Player">أضف لاعبًا</label>
+          <div class="input-row">
+            <input type="text" id="player-input" class="text-input" placeholder="اسم اللاعب..." />
+            <button type="button" class="btn-icon" onclick="addPlayer()" title="Add">
+              <span class="icon-plus">+</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-section">
+          <label class="field-label" data-ar="عدد المافيا" data-en="Number of Mafias">عدد المافيا</label>
+          <div class="mafia-count-row">
+            <button class="count-btn" onclick="changeMafiaCount(-1)">−</button>
+            <span id="mafia-count-display" class="count-display">1</span>
+            <button class="count-btn" onclick="changeMafiaCount(1)">+</button>
+          </div>
+        </div>
+
+        <div class="player-list-wrapper">
+          <div class="player-list-header">
+            <span data-ar="اللاعبون" data-en="Players">اللاعبون</span>
+            <span id="player-count-badge" class="badge">0</span>
+          </div>
+          <ul id="player-list" class="player-list"></ul>
+          <div id="empty-state" class="empty-state">
+            <span data-ar="لم يتم إضافة لاعبين بعد" data-en="No players added yet">لم يتم إضافة لاعبين بعد</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="start-btn" onclick="startGame()">
+        <span data-ar="ابدأ اللعبة" data-en="Start Game">ابدأ اللعبة</span>
+      </button>
+      <div id="start-error" class="error-msg" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- SCREEN: Role Reveal -->
+  <div id="screen-reveal" class="screen">
+    <div class="reveal-container">
+      <div class="pass-instruction" id="pass-instruction">
+        <div class="pass-label" data-ar="مرر الهاتف إلى" data-en="Pass the phone to">مرر الهاتف إلى</div>
+        <div class="pass-name" id="pass-name"></div>
+      </div>
+      <button class="btn-reveal" id="reveal-btn" onclick="revealRole()">
+        <span data-ar="اضغط لعرض دورك" data-en="Tap to reveal your role">اضغط لعرض دورك</span>
+      </button>
+      <div class="role-card" id="role-card" style="display:none">
+        <div class="role-icon" id="role-icon"></div>
+        <div class="role-name" id="role-name"></div>
+        <div class="role-desc" id="role-desc"></div>
+        <button class="btn-secondary" onclick="nextPlayer()">
+          <span data-ar="حسنًا" data-en="Got it">حسنًا</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN: Night Phase -->
+  <div id="screen-night" class="screen">
+    <div class="phase-container">
+      <div class="phase-eye">
+        <div class="eye-outer">
+          <div class="eye-pupil"></div>
+        </div>
+      </div>
+      <h2 class="phase-title" data-ar="الليل يهبط..." data-en="Night Falls...">الليل يهبط...</h2>
+      <p class="phase-sub" id="night-instructions"></p>
+
+      <div class="action-panel" id="night-panel">
+        <div class="action-group" id="mafia-action">
+          <label class="field-label" data-ar="المافيا تختار ضحية" data-en="Mafia chooses victim">المافيا تختار ضحية</label>
+          <select id="mafia-target" class="select-input"></select>
+        </div>
+        <div class="action-group" id="doctor-action" style="display:none">
+          <label class="field-label" data-ar="الدكتور يختار من ينقذ" data-en="Doctor chooses to save">الدكتور يختار من ينقذ</label>
+          <select id="doctor-target" class="select-input"></select>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="processNight()">
+        <span data-ar="الصباح يأتي" data-en="Dawn Arrives">الصباح يأتي</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Day Result -->
+  <div id="screen-day" class="screen">
+    <div class="phase-container">
+      <div class="sun-icon">☀</div>
+      <h2 class="phase-title" data-ar="الفجر" data-en="Dawn">الفجر</h2>
+      <div class="result-card" id="day-result"></div>
+      <button class="btn-primary" onclick="startVoting()">
+        <span data-ar="بدء التصويت" data-en="Start Voting">بدء التصويت</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Voting -->
+  <div id="screen-vote" class="screen">
+    <div class="phase-container">
+      <h2 class="phase-title" data-ar="التصويت" data-en="The Vote">التصويت</h2>
+      <p class="phase-sub" data-ar="من تظن أنه مافيا؟" data-en="Who do you suspect is Mafia?">من تظن أنه مافيا؟</p>
+      <div class="vote-list" id="vote-list"></div>
+      <button class="btn-primary" onclick="processVote()">
+        <span data-ar="تنفيذ الحكم" data-en="Execute Verdict">تنفيذ الحكم</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Vote Result -->
+  <div id="screen-vote-result" class="screen">
+    <div class="phase-container">
+      <div class="gavel-icon">⚖</div>
+      <h2 class="phase-title" id="vote-result-title"></h2>
+      <div class="result-card" id="vote-result-body"></div>
+      <button class="btn-primary" onclick="checkWin()">
+        <span data-ar="استمرار" data-en="Continue">استمرار</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Game Over -->
+  <div id="screen-gameover" class="screen">
+    <div class="phase-container gameover">
+      <div class="gameover-icon" id="gameover-icon"></div>
+      <h2 class="phase-title" id="gameover-title"></h2>
+      <p class="phase-sub" id="gameover-sub"></p>
+      <div class="survivors-list" id="survivors-list"></div>
+      <button class="btn-primary" onclick="resetGame()">
+        <span data-ar="العب مجددًا" data-en="Play Again">العب مجددًا</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
