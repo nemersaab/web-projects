@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بطاقات عاشوراء — أسئلة عن الإمام الحسين وآل بيته</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   TOKENS
+========================================================= */
+:root{
+  --ink:#0a0908;
+  --umber:#1c1410;
+  --umber-2:#251b15;
+  --bronze:#4a3b29;
+  --gold:#c9a05c;
+  --gold-bright:#e8c785;
+  --maroon:#7a1f2b;
+  --maroon-bright:#9c2c3a;
+  --parchment:#ecdfc8;
+  --parchment-dim:#cdbfa3;
+  --shadow: 0 20px 60px rgba(0,0,0,.55);
+  --arch: 50% 50% 14px 14px / 120px 120px 14px 14px;
+  --ease: cubic-bezier(.22,.9,.3,1);
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:'Almarai', sans-serif;
+  color:var(--parchment);
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201,160,92,.10), transparent 60%),
+    var(--ink);
+  background-attachment:fixed;
+  position:relative;
+  overflow-x:hidden;
+  transition: background .6s var(--ease);
+}
+
+/* session background presets */
+body.bg-mourning{
+  background:
+    radial-gradient(ellipse 60% 35% at 50% -5%, rgba(201,160,92,.12), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(201,160,92,.035) 0 2px, transparent 2px 26px),
+    repeating-linear-gradient(-45deg, rgba(201,160,92,.035) 0 2px, transparent 2px 26px),
+    linear-gradient(180deg,#0a0908,#120d0a);
+}
+body.bg-sky{
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 100%, rgba(122,31,43,.45), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 50% 0%, rgba(122,31,43,.18), transparent 60%),
+    linear-gradient(180deg,#0a0908 0%, #150b0c 55%, #1d0d0f 100%);
+}
+body.bg-dome{
+  background:
+    radial-gradient(ellipse 45% 30% at 50% 6%, rgba(232,199,133,.22), transparent 65%),
+    radial-gradient(ellipse 70% 40% at 50% 110%, rgba(74,59,41,.35), transparent 70%),
+    linear-gradient(180deg,#0a0908,#161009);
+}
+body.bg-custom{ background-size:cover; background-position:center; background-attachment:fixed; }
+body.bg-custom::after{
+  content:"";
+  position:fixed; inset:0;
+  background:linear-gradient(180deg, rgba(10,9,8,.55), rgba(10,9,8,.78));
+  pointer-events:none; z-index:0;
+}
+
+/* ambient drifting embers */
+.embers{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.embers span{
+  position:absolute; bottom:-10px;
+  width:3px; height:3px; border-radius:50%;
+  background:var(--gold-bright);
+  box-shadow:0 0 6px 1px rgba(232,199,133,.8);
+  opacity:0;
+}
+@media (prefers-reduced-motion: no-preference){
+  .embers span{ animation:rise linear infinite; }
+  .embers span:nth-child(1){ left:8%;  animation-duration:14s; animation-delay:0s; }
+  .embers span:nth-child(2){ left:22%; animation-duration:18s; animation-delay:3s; }
+  .embers span:nth-child(3){ left:38%; animation-duration:12s; animation-delay:6s; }
+  .embers span:nth-child(4){ left:55%; animation-duration:20s; animation-delay:1s; }
+  .embers span:nth-child(5){ left:70%; animation-duration:15s; animation-delay:4s; }
+  .embers span:nth-child(6){ left:85%; animation-duration:17s; animation-delay:8s; }
+  .embers span:nth-child(7){ left:93%; animation-duration:13s; animation-delay:2s; }
+}
+@keyframes rise{
+  0%{ transform:translateY(0) translateX(0); opacity:0; }
+  10%{ opacity:.9; }
+  90%{ opacity:.4; }
+  100%{ transform:translateY(-100vh) translateX(20px); opacity:0; }
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+.wrap{
+  position:relative; z-index:1;
+  min-height:100vh;
+  display:flex; flex-direction:column; align-items:center;
+  padding:28px 16px 48px;
+}
+
+.topbar{
+  width:100%; max-width:640px;
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:6px;
+}
+.icon-btn{
+  width:42px; height:42px; border-radius:50%;
+  border:1px solid rgba(201,160,92,.5);
+  background:rgba(201,160,92,.06);
+  color:var(--gold-bright);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  transition:background .25s, transform .25s, border-color .25s;
+}
+.icon-btn:hover{ background:rgba(201,160,92,.16); transform:rotate(18deg); }
+.icon-btn svg{ width:20px; height:20px; }
+
+header.title-block{ text-align:center; margin:6px auto 22px; }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:13px; letter-spacing:2px; color:var(--gold);
+  margin-bottom:8px;
+}
+.eyebrow::before, .eyebrow::after{ content:"ـ"; color:var(--bronze); font-size:18px; }
+h1{
+  font-family:'Aref Ruqaa', serif; font-weight:700;
+  font-size:clamp(28px,6vw,42px);
+  margin:0; color:var(--parchment);
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
+}
+.subtitle{
+  margin-top:8px; font-size:14px; color:var(--parchment-dim);
+  font-weight:300;
+}
+.hairline{
+  width:140px; height:1px; margin:16px auto 0;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* =========================================================
+   CARD STAGE
+========================================================= */
+.stage{
+  position:relative;
+  width:100%; max-width:420px;
+  perspective:1800px;
+  margin:18px 0 8px;
+}
+.card{
+  position:relative; width:100%;
+  height:clamp(360px,52vh,440px);
+  cursor:pointer;
+  outline:none;
+}
+.card::before{ /* finial line above arch */
+  content:"";
+  position:absolute; right:50%; transform:translateX(50%);
+  top:-26px; width:1px; height:24px;
+  background:linear-gradient(180deg, transparent, var(--gold));
+}
+.card::after{ /* finial dot */
+  content:"";
+  position:absolute; right:50%; transform:translateX(50%);
+  top:-32px; width:8px; height:8px; border-radius:50%;
+  background:var(--gold-bright);
+  box-shadow:0 0 10px 2px rgba(232,199,133,.7);
+}
+.card-inner{
+  position:relative; width:100%; height:100%;
+  transition:transform .8s var(--ease);
+  transform-style:preserve-3d;
+}
+.card.is-flipped .card-inner{ transform:rotateY(180deg); }
+.card:focus-visible .card-face{ outline:2px solid var(--gold-bright); outline-offset:4px; }
+
+.card-face{
+  position:absolute; inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:var(--arch);
+  border:1px solid rgba(201,160,92,.55);
+  box-shadow:var(--shadow), inset 0 0 40px rgba(201,160,92,.06);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:46px 30px 34px;
+  background:
+    repeating-linear-gradient(135deg, rgba(201,160,92,.045) 0 1px, transparent 1px 22px),
+    linear-gradient(165deg, var(--umber-2), var(--umber) 60%, #150f0a);
+}
+.card-back{ transform:rotateY(180deg); }
+
+.face-kicker{
+  font-size:12px; letter-spacing:3px; color:var(--gold);
+  margin-bottom:14px; font-weight:700;
+}
+.face-text{
+  font-family:'Aref Ruqaa', serif; font-size:clamp(19px,4.4vw,24px);
+  line-height:1.7; color:var(--parchment);
+}
+.card-back .face-text{ color:var(--gold-bright); }
+.hint{
+  position:absolute; bottom:16px; font-size:12px; color:var(--parchment-dim);
+  opacity:.7; letter-spacing:.5px;
+}
+
+/* flame icon */
+.flame-wrap{
+  position:absolute; top:16px; left:18px; width:22px; height:26px;
+}
+.flame-wrap svg{ width:100%; height:100%; opacity:.28; transition:opacity .4s; }
+.flame-wrap path{ fill:var(--gold); }
+.card.is-flipped .card-back .flame-wrap svg{ opacity:1; }
+@media (prefers-reduced-motion: no-preference){
+  .card.is-flipped .card-back .flame-wrap svg{ animation:flicker 1.6s ease-in-out infinite; }
+}
+@keyframes flicker{
+  0%,100%{ transform:scale(1) translateY(0); filter:drop-shadow(0 0 4px rgba(232,199,133,.6)); }
+  35%{ transform:scale(1.06,.96) translateY(-1px); }
+  50%{ transform:scale(.95,1.05) translateY(0); filter:drop-shadow(0 0 9px rgba(232,199,133,.9)); }
+  75%{ transform:scale(1.03,.98) translateY(-.5px); }
+}
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+.controls{
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  margin-top:22px; width:100%; max-width:420px;
+}
+.pill-btn{
+  font-family:'Almarai',sans-serif; font-weight:700; font-size:14px;
+  border-radius:999px; padding:11px 18px;
+  border:1px solid var(--gold); background:transparent; color:var(--gold-bright);
+  cursor:pointer; transition:all .25s var(--ease);
+  display:flex; align-items:center; gap:6px;
+}
+.pill-btn:hover{ background:rgba(201,160,92,.14); }
+.pill-btn.center{
+  background:var(--gold); color:var(--ink); border-color:var(--gold);
+  padding:11px 24px;
+}
+.pill-btn.center:hover{ background:var(--gold-bright); }
+.pill-btn svg{ width:16px; height:16px; }
+.pill-btn:disabled{ opacity:.35; cursor:not-allowed; }
+
+.grade-row{
+  display:flex; gap:12px; margin-top:16px; width:100%; max-width:420px;
+  opacity:0; max-height:0; overflow:hidden;
+  transition:opacity .35s var(--ease), max-height .35s var(--ease), margin .35s;
+}
+.grade-row.show{ opacity:1; max-height:80px; margin-top:16px; }
+.grade-btn{
+  flex:1; padding:11px; border-radius:999px; font-family:'Almarai';
+  font-weight:700; font-size:13px; cursor:pointer; transition:.25s;
+}
+.grade-btn.review{ background:transparent; border:1px solid var(--maroon-bright); color:#e8a4ad; }
+.grade-btn.review:hover{ background:rgba(122,31,43,.25); }
+.grade-btn.know{ background:var(--maroon); border:1px solid var(--maroon-bright); color:var(--parchment); }
+.grade-btn.know:hover{ background:var(--maroon-bright); }
+
+/* progress */
+.progress-block{ width:100%; max-width:420px; margin-top:24px; }
+.progress-text{
+  text-align:center; font-size:13px; color:var(--parchment-dim);
+  margin-bottom:8px; letter-spacing:.5px;
+}
+.progress-track{
+  height:3px; border-radius:3px; background:rgba(201,160,92,.18); overflow:hidden;
+}
+.progress-fill{
+  height:100%; background:linear-gradient(90deg,var(--maroon),var(--gold));
+  transition:width .4s var(--ease);
+}
+
+footer.note{
+  margin-top:34px; font-size:12px; color:var(--parchment-dim);
+  opacity:.65; text-align:center; max-width:420px; line-height:1.8;
+}
+
+/* =========================================================
+   SUMMARY OVERLAY
+========================================================= */
+.summary{
+  position:absolute; inset:0; z-index:5;
+  display:none; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:36px 28px;
+  border-radius:var(--arch);
+  background:linear-gradient(165deg, var(--umber-2), var(--umber) 60%, #150f0a);
+  border:1px solid var(--gold);
+  box-shadow:var(--shadow);
+}
+.summary.show{ display:flex; }
+.summary svg{ width:46px; height:46px; margin-bottom:14px; }
+.summary h2{ font-family:'Aref Ruqaa'; color:var(--gold-bright); margin:0 0 8px; font-size:24px; }
+.summary p{ color:var(--parchment-dim); font-size:14px; margin:4px 0 22px; }
+.summary .stats{ display:flex; gap:18px; margin-bottom:22px; }
+.summary .stat{ text-align:center; }
+.summary .stat b{ display:block; font-size:22px; color:var(--gold-bright); font-family:'Aref Ruqaa'; }
+.summary .stat span{ font-size:11px; color:var(--parchment-dim); }
+.summary .actions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+
+/* =========================================================
+   DRAWER
+========================================================= */
+.backdrop{
+  position:fixed; inset:0; background:rgba(5,4,3,.65); backdrop-filter:blur(2px);
+  z-index:10; opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
+}
+.backdrop.show{ opacity:1; pointer-events:auto; }
+
+.drawer{
+  position:fixed; top:0; bottom:0; right:0; z-index:11;
+  width:380px; max-width:92vw;
+  background:linear-gradient(180deg,#150f0b,#0e0a07);
+  border-left:1px solid rgba(201,160,92,.4);
+  box-shadow:-30px 0 60px rgba(0,0,0,.5);
+  transform:translateX(100%);
+  transition:transform .4s var(--ease);
+  overflow-y:auto;
+  padding:22px 20px 40px;
+}
+.drawer.show{ transform:translateX(0); }
+.drawer-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.drawer-head h2{ font-family:'Aref Ruqaa'; font-size:20px; color:var(--gold-bright); margin:0; }
+.drawer-head .icon-btn{ width:34px; height:34px; }
+.drawer .hairline{ margin:14px 0 18px; width:100%; }
+
+.section-label{
+  font-size:13px; font-weight:700; color:var(--gold);
+  margin-bottom:10px; display:flex; align-items:center; gap:8px;
+}
+.section-label svg{ width:15px; height:15px; }
+
+.bg-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:26px; }
+.bg-option{
+  position:relative; cursor:pointer; border-radius:10px; overflow:hidden;
+  border:2px solid rgba(201,160,92,.25); height:64px;
+  display:flex; align-items:flex-end; justify-content:center;
+  transition:border-color .25s;
+}
+.bg-option.active{ border-color:var(--gold-bright); }
+.bg-option span{
+  font-size:11px; color:var(--parchment); background:rgba(0,0,0,.45);
+  width:100%; text-align:center; padding:4px 0;
+}
+.bg-option.swatch-mourning{ background:repeating-linear-gradient(45deg,#1c1410 0 6px,#0a0908 6px 12px); }
+.bg-option.swatch-sky{ background:linear-gradient(180deg,#150b0c,#7a1f2b); }
+.bg-option.swatch-dome{ background:radial-gradient(circle at 50% 20%, #e8c785, #161009 70%); }
+.bg-option.swatch-custom{ background:linear-gradient(135deg,#3a2e22,#0a0908); }
+.bg-option input[type=file]{ position:absolute; inset:0; opacity:0; cursor:pointer; }
+
+.tabs{ display:flex; gap:8px; margin-bottom:14px; }
+.tab-btn{
+  flex:1; padding:8px; border-radius:8px; font-size:12.5px; font-weight:700;
+  background:transparent; border:1px solid rgba(201,160,92,.3); color:var(--parchment-dim);
+  cursor:pointer; transition:.25s;
+}
+.tab-btn.active{ background:rgba(201,160,92,.15); color:var(--gold-bright); border-color:var(--gold); }
+
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; }
+
+textarea, input[type=text]{
+  width:100%; background:rgba(255,255,255,.03); border:1px solid rgba(201,160,92,.3);
+  border-radius:8px; padding:10px 12px; color:var(--parchment); font-family:'Almarai';
+  font-size:13px; resize:vertical;
+}
+textarea{ min-height:110px; line-height:1.7; }
+textarea::placeholder, input::placeholder{ color:rgba(205,191,163,.45); }
+.field-label{ font-size:12px; color:var(--parchment-dim); margin:10px 0 5px; display:block; }
+.small-btn{
+  margin-top:10px; width:100%; padding:9px; border-radius:8px; border:1px solid var(--gold);
+  background:rgba(201,160,92,.1); color:var(--gold-bright); font-weight:700; font-size:13px;
+  cursor:pointer; transition:.25s;
+}
+.small-btn:hover{ background:rgba(201,160,92,.22); }
+
+.pending-list{
+  margin-top:14px; max-height:170px; overflow-y:auto;
+  border-top:1px solid rgba(201,160,92,.2); padding-top:10px;
+}
+.pending-item{
+  display:flex; align-items:flex-start; gap:8px; font-size:12.5px;
+  padding:7px 0; border-bottom:1px dashed rgba(201,160,92,.15);
+}
+.pending-item .txt{ flex:1; color:var(--parchment-dim); line-height:1.6; }
+.pending-item .txt b{ color:var(--parchment); font-weight:700; }
+.pending-item .rm{
+  background:none; border:none; color:var(--maroon-bright); cursor:pointer; font-size:15px;
+  line-height:1; padding:2px 4px;
+}
+.pending-empty{ font-size:12px; color:var(--parchment-dim); opacity:.6; text-align:center; padding:14px 0; }
+
+.drawer-actions{ display:flex; flex-direction:column; gap:10px; margin-top:18px; }
+.btn-primary{
+  padding:12px; border-radius:999px; border:none; background:var(--gold); color:var(--ink);
+  font-weight:800; font-size:13.5px; cursor:pointer; transition:.25s;
+}
+.btn-primary:hover{ background:var(--gold-bright); }
+.btn-primary:disabled{ opacity:.35; cursor:not-allowed; }
+.btn-ghost{
+  padding:11px; border-radius:999px; border:1px solid rgba(201,160,92,.4); background:transparent;
+  color:var(--parchment-dim); font-weight:700; font-size:13px; cursor:pointer; transition:.25s;
+}
+.btn-ghost:hover{ border-color:var(--gold); color:var(--gold-bright); }
+
+.drawer-note{
+  margin-top:18px; font-size:11px; color:var(--parchment-dim); opacity:.6; line-height:1.8;
+  text-align:center;
+}
+
+/* toast */
+.toast{
+  position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:var(--umber-2); border:1px solid var(--gold); color:var(--parchment);
+  padding:11px 22px; border-radius:999px; font-size:13px; z-index:20;
+  opacity:0; pointer-events:none; transition:all .35s var(--ease);
+  box-shadow:var(--shadow);
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+@media (max-width:380px){
+  .controls{ flex-wrap:wrap; }
+}
+</style>
+</head>
+<body class="bg-mourning">
+
+<div class="embers" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <button class="icon-btn" id="settingsBtn" aria-haspopup="dialog" aria-controls="drawer" title="إعدادات المجلس">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2-1.5-2-3.4-2.4.6a7.7 7.7 0 0 0-1.7-1L15 3h-6l-.3 2.7a7.7 7.7 0 0 0-1.7 1l-2.4-.6-2 3.4L4.6 11a7.6 7.6 0 0 0 0 2l-2 1.5 2 3.4 2.4-.6c.5.45 1.1.78 1.7 1L9 21h6l.3-2.7c.6-.22 1.2-.55 1.7-1l2.4.6 2-3.4-2-1.5Z"/></svg>
+    </button>
+    <div style="width:42px"></div>
+  </div>
+
+  <header class="title-block">
+    <div class="eyebrow">مجلس الأسئلة</div>
+    <h1>بطاقات عاشوراء</h1>
+    <p class="subtitle">تعرّفوا على الإمام الحسين وأهل بيته عليهم السلام، بطاقة بطاقة</p>
+    <div class="hairline"></div>
+  </header>
+
+  <div class="stage">
+    <div class="card" id="card" tabindex="0" role="button" aria-label="بطاقة سؤال، اضغط لقلبها وإظهار الجواب">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <div class="flame-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2c1 3-2.5 4-2.5 7.2 0 1.5 1.1 2.8 2.5 2.8s2.5-1.3 2.5-2.8C14.5 6 12 5 12 2zm0 9c-2.8 0-5 2-5 4.8C7 19.3 9.2 22 12 22s5-2.7 5-5.2C17 13 14.8 11 12 11z"/></svg>
+          </div>
+          <div class="face-kicker">السؤال</div>
+          <div class="face-text" id="questionText">جارٍ التحميل…</div>
+          <div class="hint">اضغط للقلب وإظهار الجواب</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="flame-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2c1 3-2.5 4-2.5 7.2 0 1.5 1.1 2.8 2.5 2.8s2.5-1.3 2.5-2.8C14.5 6 12 5 12 2zm0 9c-2.8 0-5 2-5 4.8C7 19.3 9.2 22 12 22s5-2.7 5-5.2C17 13 14.8 11 12 11z"/></svg>
+          </div>
+          <div class="face-kicker">الجواب</div>
+          <div class="face-text" id="answerText"></div>
+          <div class="hint">اضغط للعودة إلى السؤال</div>
+        </div>
+      </div>
+
+      <div class="summary" id="summary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold-bright)" stroke-width="1.6"><path d="M12 2c1 3-2.5 4-2.5 7.2 0 1.5 1.1 2.8 2.5 2.8s2.5-1.3 2.5-2.8C14.5 6 12 5 12 2zm0 9c-2.8 0-5 2-5 4.8C7 19.3 9.2 22 12 22s5-2.7 5-5.2C17 13 14.8 11 12 11z"/></svg>
+        <h2 id="summaryTitle">أنرتم البطاقات كلّها</h2>
+        <p>إليكم خلاصة هذه الجلسة</p>
+        <div class="stats">
+          <div class="stat"><b id="statKnow">0</b><span>عرفتوها</span></div>
+          <div class="stat"><b id="statReview">0</b><span>للمراجعة</span></div>
+          <div class="stat"><b id="statTotal">0</b><span>المجموع</span></div>
+        </div>
+        <div class="actions">
+          <button class="pill-btn center" id="restartBtn">إعادة من البداية</button>
+          <button class="pill-btn" id="shuffleAgainBtn">بطاقات مُخلّطة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grade-row" id="gradeRow">
+    <button class="grade-btn review" id="gradeReview">أحتاج مراجعة 🔁</button>
+    <button class="grade-btn know" id="gradeKnow">عرفتُ الجواب ✅</button>
+  </div>
+
+  <div class="controls">
+    <button class="pill-btn" id="prevBtn" title="السابق">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 5l-7 7 7 7"/></svg>
+      السابق
+    </button>
+    <button class="pill-btn center" id="flipBtn">اقلب البطاقة</button>
+    <button class="pill-btn" id="nextBtn" title="التالي">
+      التالي
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <div class="progress-block">
+    <div class="progress-text" id="progressText">١ / ١٨</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+
+  <button class="pill-btn" id="shuffleBtn" style="margin-top:18px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h4l5 6 5-6h4M3 18h4l3.5-4.2M21 18h-4l-2-2.4"/></svg>
+    خلط الأسئلة
+  </button>
+
+  <footer class="note">
+    بطاقات تعليمية وتذكيرية بمناسبة عاشوراء، لمجالس العزاء والعائلة. يمكنكم استبدال الأسئلة وخلفية الصفحة من زر الإعدادات أعلاه.
+  </footer>
+</div>
+
+<div class="backdrop" id="backdrop"></div>
+
+<aside class="drawer" id="drawer" role="dialog" aria-label="إعدادات المجلس">
+  <div class="drawer-head">
+    <h2>إعدادات المجلس</h2>
+    <button class="icon-btn" id="closeDrawer" aria-label="إغلاق">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="hairline"></div>
+
+  <div class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+    خلفية المجلس
+  </div>
+  <div class="bg-grid">
+    <div class="bg-option swatch-mourning active" data-bg="bg-mourning"><span>ثوب الحداد</span></div>
+    <div class="bg-option swatch-sky" data-bg="bg-sky"><span>سماء كربلاء</span></div>
+    <div class="bg-option swatch-dome" data-bg="bg-dome"><span>القبة الذهبية</span></div>
+    <label class="bg-option swatch-custom" data-bg="bg-custom">
+      <span>خلفية خاصة</span>
+      <input type="file" id="bgUpload" accept="image/*">
+    </label>
+  </div>
+
+  <div class="section-label">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.5 1 .5 1.6h6c0-.6 0-1.2.5-1.6A6 6 0 0 0 12 3Z"/></svg>
+    أسئلة هذه الجلسة
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="paste">لصق نص</button>
+    <button class="tab-btn" data-tab="manual">إضافة سؤال بسؤال</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-paste">
+    <span class="field-label">سؤال واحد في كل سطر، بالصيغة: السؤال : الجواب</span>
+    <textarea id="bulkText" placeholder="مثال:&#10;من هو أبو الإمام الحسين؟ : الإمام علي بن أبي طالب&#10;من هي أم الإمام الحسين؟ : السيدة فاطمة الزهراء"></textarea>
+    <button class="small-btn" id="addBulkBtn">إضافة من النص إلى القائمة</button>
+  </div>
+
+  <div class="tab-panel" id="tab-manual">
+    <span class="field-label">السؤال</span>
+    <input type="text" id="manualQ" placeholder="اكتب السؤال هنا">
+    <span class="field-label">الجواب</span>
+    <input type="text" id="manualA" placeholder="اكتب الجواب هنا">
+    <button class="small-btn" id="addManualBtn">إضافة إلى القائمة</button>
+  </div>
+
+  <div class="pending-list" id="pendingList">
+    <div class="pending-empty">لم تتم إضافة أسئلة جديدة بعد</div>
+  </div>
+
+  <div class="drawer-actions">
+    <button class="btn-primary" id="startSessionBtn" disabled>ابدأ هذه الجلسة بالأسئلة الجديدة</button>
+    <button class="btn-ghost" id="resetDefaultBtn">استعادة الأسئلة الافتراضية</button>
+  </div>
+
+  <div class="drawer-note">
+    أسئلة هذه الجلسة مؤقتة ولا تُحفظ بعد إغلاق الصفحة أو تحديثها.
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------------------------------------------------
+     DEFAULT QUESTIONS
+  --------------------------------------------------------- */
+  const DEFAULT_QUESTIONS = [
+    { q:"من هو والد الإمام الحسين؟", a:"الإمام علي بن أبي طالب (عليه السلام)" },
+    { q:"من هي والدة الإمام الحسين؟", a:"السيدة فاطمة الزهراء (عليها السلام)، بنت رسول الله" },
+    { q:"من هو جدّ الإمام الحسين من جهة أمّه؟", a:"رسول الله محمد (صلى الله عليه وآله وسلم)" },
+    { q:"من هو الأخ الأكبر للإمام الحسين؟", a:"الإمام الحسن بن علي (عليه السلام)" },
+    { q:"ما اسم أخت الإمام الحسين التي خطبت في الكوفة والشام بعد عاشوراء؟", a:"السيدة زينب الكبرى (عليها السلام)" },
+    { q:"بأي لقبٍ اشتهرت السيدة زينب؟", a:"عقيلة بني هاشم" },
+    { q:"من هو أخو الإمام الحسين الذي استُشهد وهو يحاول إيصال الماء إلى الخيام؟", a:"العباس بن علي، المعروف بأبي الفضل العباس (عليه السلام)" },
+    { q:"بأي الألقاب عُرف العباس بن علي؟", a:"قمر بني هاشم، وساقي العطاشى، وحامل اللواء" },
+    { q:"من هي أخت الإمام الحسين الأخرى التي كانت معه في كربلاء؟", a:"السيدة أم كلثوم (عليها السلام)" },
+    { q:"من هو ابن الإمام الحسين الذي نجا من واقعة الطف بسبب مرضه؟", a:"الإمام علي بن الحسين، الملقّب بزين العابدين والسجّاد (عليه السلام)" },
+    { q:"ما اسم طفل الإمام الحسين الرضيع الذي استُشهد في كربلاء؟", a:"الرضيع عبد الله، المعروف بعلي الأصغر" },
+    { q:"ما اسم الأرض التي وقعت فيها واقعة عاشوراء؟", a:"أرض كربلاء في العراق" },
+    { q:"في أي شهرٍ من السنة الهجرية وقعت واقعة عاشوراء؟", a:"شهر محرّم الحرام" },
+    { q:"في أي يومٍ من محرّم استُشهد الإمام الحسين؟", a:"اليوم العاشر، وهو يوم عاشوراء" },
+    { q:"من كان الخليفة الأموي في زمن واقعة كربلاء؟", a:"يزيد بن معاوية" },
+    { q:"ما اسم ابنة الإمام الحسين التي اشتهرت بروايتها لأحداث كربلاء؟", a:"السيدة سكينة بنت الحسين (عليها السلام)" },
+    { q:"بأي لقبٍ يُعرف الإمام الحسين بين المسلمين؟", a:"سيّد الشهداء" },
+    { q:"من هم أبناء الإمام علي والسيدة فاطمة الزهراء المشهورون؟", a:"الإمام الحسن، والإمام الحسين، والسيدة زينب، والسيدة أم كلثوم (عليهم السلام)" }
+  ];
+
+  /* ---------------------------------------------------------
+     STATE
+  --------------------------------------------------------- */
+  let questions = DEFAULT_QUESTIONS.slice();
+  let order = questions.map((_,i)=>i);
+  let pos = 0;
+  let known = new Set();
+  let review = new Set();
+  let pending = [];
+
+  const ARABIC_DIGITS = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  const toAr = n => String(n).split('').map(d => ARABIC_DIGITS[d] ?? d).join('');
+
+  /* ---------------------------------------------------------
+     ELEMENTS
+  --------------------------------------------------------- */
+  const card = document.getElementById('card');
+  const questionText = document.getElementById('questionText');
+  const answerText = document.getElementById('answerText');
+  const progressText = document.getElementById('progressText');
+  const progressFill = document.getElementById('progressFill');
+  const gradeRow = document.getElementById('gradeRow');
+  const summary = document.getElementById('summary');
+  const summaryTitle = document.getElementById('summaryTitle');
+  const statKnow = document.getElementById('statKnow');
+  const statReview = document.getElementById('statReview');
+  const statTotal = document.getElementById('statTotal');
+  const toast = document.getElementById('toast');
+
+  /* ---------------------------------------------------------
+     RENDER
+  --------------------------------------------------------- */
+  function currentItem(){ return questions[order[pos]]; }
+
+  function render(){
+    summary.classList.remove('show');
+    card.classList.remove('is-flipped');
+    gradeRow.classList.remove('show');
+    const item = currentItem();
+    questionText.textContent = item.q;
+    answerText.textContent = item.a;
+    progressText.textContent = `${toAr(pos+1)} / ${toAr(questions.length)}`;
+    progressFill.style.width = ((pos+1)/questions.length*100) + '%';
+  }
+
+  function flip(){
+    if (summary.classList.contains('show')) return;
+    const flipped = card.classList.toggle('is-flipped');
+    if (flipped) gradeRow.classList.add('show');
+    else gradeRow.classList.remove('show');
+  }
+
+  function goNext(){
+    if (pos >= questions.length - 1){ showSummary(); return; }
+    pos++; render();
+  }
+  function goPrev(){
+    if (summary.classList.contains('show')){ summary.classList.remove('show'); render(); return; }
+    pos = (pos - 1 + questions.length) % questions.length; render();
+  }
+
+  function grade(isKnown){
+    const idx = order[pos];
+    if (isKnown){ known.add(idx); review.delete(idx); }
+    else { review.add(idx); known.delete(idx); }
+    goNext();
+  }
+
+  function showSummary(){
+    card.classList.remove('is-flipped');
+    gradeRow.classList.remove('show');
+    statKnow.textContent = toAr(known.size);
+    statReview.textContent = toAr(review.size);
+    statTotal.textContent = toAr(questions.length);
+    summaryTitle.textContent = known.size + review.size >= questions.length
+      ? 'أنرتم البطاقات كلّها'
+      : 'وصلتم إلى نهاية البطاقات';
+    summary.classList.add('show');
+  }
+
+  function shuffleOrder(){
+    order = questions.map((_,i)=>i);
+    for (let i = order.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [order[i],order[j]] = [order[j],order[i]];
+    }
+    pos = 0; known.clear(); review.clear();
+    render();
+    showToast('تم خلط الأسئلة');
+  }
+
+  function restart(){
+    pos = 0; known.clear(); review.clear();
+    render();
+  }
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(()=> toast.classList.remove('show'), 2200);
+  }
+
+  /* ---------------------------------------------------------
+     CARD EVENTS
+  --------------------------------------------------------- */
+  card.addEventListener('click', flip);
+  card.addEventListener('keydown', e=>{
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); flip(); }
+  });
+  document.getElementById('flipBtn').addEventListener('click', flip);
+  document.getElementById('nextBtn').addEventListener('click', goNext);
+  document.getElementById('prevBtn').addEventListener('click', goPrev);
+  document.getElementById('shuffleBtn').addEventListener('click', shuffleOrder);
+  document.getElementById('gradeKnow').addEventListener('click', ()=>grade(true));
+  document.getElementById('gradeReview').addEventListener('click', ()=>grade(false));
+  document.getElementById('restartBtn').addEventListener('click', restart);
+  document.getElementById('shuffleAgainBtn').addEventListener('click', shuffleOrder);
+
+  document.addEventListener('keydown', e=>{
+    if (document.getElementById('drawer').classList.contains('show')) return;
+    if (e.key === 'ArrowRight') goPrev();
+    if (e.key === 'ArrowLeft') goNext();
+  });
+
+  /* ---------------------------------------------------------
+     DRAWER
+  --------------------------------------------------------- */
+  const drawer = document.getElementById('drawer');
+  const backdrop = document.getElementById('backdrop');
+  function openDrawer(){ drawer.classList.add('show'); backdrop.classList.add('show'); }
+  function closeDrawerFn(){ drawer.classList.remove('show'); backdrop.classList.remove('show'); }
+  document.getElementById('settingsBtn').addEventListener('click', openDrawer);
+  document.getElementById('closeDrawer').addEventListener('click', closeDrawerFn);
+  backdrop.addEventListener('click', closeDrawerFn);
+
+  /* background presets */
+  const bgOptions = document.querySelectorAll('.bg-option');
+  bgOptions.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const target = opt.dataset.bg;
+      if (target === 'bg-custom') return; // handled by file input
+      applyBg(target);
+    });
+  });
+  function applyBg(cls){
+    document.body.className = cls;
+    bgOptions.forEach(o=> o.classList.toggle('active', o.dataset.bg === cls));
+  }
+  document.getElementById('bgUpload').addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      document.body.className = 'bg-custom';
+      document.body.style.backgroundImage = `url(${ev.target.result})`;
+      bgOptions.forEach(o=> o.classList.toggle('active', o.dataset.bg === 'bg-custom'));
+      showToast('تم تطبيق الخلفية المخصصة');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* tabs */
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  /* pending question list */
+  const pendingListEl = document.getElementById('pendingList');
+  const startSessionBtn = document.getElementById('startSessionBtn');
+
+  function renderPending(){
+    if (!pending.length){
+      pendingListEl.innerHTML = '<div class="pending-empty">لم تتم إضافة أسئلة جديدة بعد</div>';
+      startSessionBtn.disabled = true;
+      return;
+    }
+    startSessionBtn.disabled = false;
+    pendingListEl.innerHTML = pending.map((item,i)=>`
+      <div class="pending-item">
+        <div class="txt"><b>${escapeHtml(item.q)}</b><br>${escapeHtml(item.a)}</div>
+        <button class="rm" data-i="${i}" aria-label="حذف">×</button>
+      </div>`).join('');
+    pendingListEl.querySelectorAll('.rm').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        pending.splice(Number(btn.dataset.i),1);
+        renderPending();
+      });
+    });
+  }
+  function escapeHtml(s){
+    return s.replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  }
+
+  document.getElementById('addManualBtn').addEventListener('click', ()=>{
+    const qEl = document.getElementById('manualQ');
+    const aEl = document.getElementById('manualA');
+    const q = qEl.value.trim(), a = aEl.value.trim();
+    if (!q || !a){ showToast('يرجى كتابة السؤال والجواب'); return; }
+    pending.push({ q, a });
+    qEl.value=''; aEl.value=''; qEl.focus();
+    renderPending();
+  });
+
+  document.getElementById('addBulkBtn').addEventListener('click', ()=>{
+    const raw = document.getElementById('bulkText').value;
+    const lines = raw.split('\n').map(l=>l.trim()).filter(Boolean);
+    let added = 0;
+    lines.forEach(line=>{
+      const idx = line.indexOf(':');
+      if (idx === -1) return;
+      const q = line.slice(0, idx).trim();
+      const a = line.slice(idx+1).trim();
+      if (q && a){ pending.push({ q, a }); added++; }
+    });
+    if (added){
+      document.getElementById('bulkText').value = '';
+      renderPending();
+      showToast(`أُضيف ${toAr(added)} سؤالاً إلى القائمة`);
+    } else {
+      showToast('لم يتم التعرّف على أي سؤال، تأكدوا من الصيغة "سؤال : جواب"');
+    }
+  });
+
+  startSessionBtn.addEventListener('click', ()=>{
+    if (!pending.length) return;
+    questions = pending.slice();
+    pending = [];
+    renderPending();
+    shuffleOrderKeepNoShuffle();
+    closeDrawerFn();
+    showToast(`بدأت الجلسة بـ ${toAr(questions.length)} سؤالاً`);
+  });
+
+  document.getElementById('resetDefaultBtn').addEventListener('click', ()=>{
+    questions = DEFAULT_QUESTIONS.slice();
+    pending = [];
+    renderPending();
+    shuffleOrderKeepNoShuffle();
+    closeDrawerFn();
+    showToast('عادت الأسئلة الافتراضية');
+  });
+
+  function shuffleOrderKeepNoShuffle(){
+    order = questions.map((_,i)=>i);
+    pos = 0; known.clear(); review.clear();
+    render();
+  }
+
+  /* ---------------------------------------------------------
+     INIT
+  --------------------------------------------------------- */
+  render();
+})();
+</script>
+</body>
+</html>
